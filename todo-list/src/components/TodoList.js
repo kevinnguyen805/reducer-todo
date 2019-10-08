@@ -4,14 +4,14 @@ import TodoItem from './TodoItem'
 
 function TodoList(props){
 
-     console.log(props.state)
      let todoList = props.state
+     let toggleItem = props.toggleItem
 
      return(
           <div>
                {todoList.map(item => {
                     return(
-                         <TodoItem key={item.id} {...item}/>
+                         <TodoItem key={item.id} {...item} toggleItem={toggleItem}/>
                     )
                })
                }

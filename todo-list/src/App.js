@@ -1,5 +1,4 @@
 import React, {useState, useReducer } from 'react';
-import ListForm from './components/ListForm'
 import TodoList from './components/TodoList'
 import './App.css';
 
@@ -12,31 +11,26 @@ import {initialState, reducer } from './reducers/todoReducer'
 function App() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [newTodo, setNewTodo] = useState('')
-
-  const addItem = (item) => {
-    const newItem = {
-      name: item,
-      id: Date.now(),
-      purchased:false
-    }
-    setNewTodo(newItem)
-  }
-
-  // ** LIST FORM STUFF
   const [item, setItem] = useState('')
 
+  // ** LIST FORM
   const handleChanges = event => {
     setItem(event.target.value)
   }
   const submitItem = event => {
     event.preventDefault();
-    addItem(item)
   }
+
+  // ** TOGGLE COMPLETED
+  const toggleItem = (id) => {
+    dispatch( { type:"TOGGLE_ITEM", payload: id})
+  }
+
+
 
   return (
     <div className="App">
-      <TodoList state={state.todos}/>
+      <TodoList state={state.todos} toggleItem={toggleItem}/>
       {/* <ListForm addItem={addItem} /> */}
 
 
