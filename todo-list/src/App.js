@@ -45,6 +45,7 @@ function App() {
         <button onClick={() => dispatch({ type: 'ADD_TODO', payload: item })}>Add Item</button>
       </form>
 
+      <button onClick={() => dispatch({type:"CLEAR_COMPLETED"})}>Clear Completed</button>
     </div>
   );
 }
