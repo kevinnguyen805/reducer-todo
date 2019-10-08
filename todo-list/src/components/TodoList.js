@@ -4,6 +4,7 @@ import TodoItem from './TodoItem'
 
 function TodoList(props){
 
+     console.log(props.state)
      let todoList = props.state
 
      return(
